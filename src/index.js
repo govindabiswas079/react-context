@@ -2,12 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import reportWebVitals from './reportWebVitals';
+import { FirstContextProvider } from './context/FirstContext';
+import { SecondContextProvider } from './context/SecondContext';
+import { ThirdContextProvider } from './context/ThirdContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <FirstContextProvider>
+      <SecondContextProvider>
+        <ThirdContextProvider>
+          <App />
+        </ThirdContextProvider>
+      </SecondContextProvider>
+    </FirstContextProvider>
   </React.StrictMode>
 );
 

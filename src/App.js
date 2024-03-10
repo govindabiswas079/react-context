@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react'
+import { useFirstContext } from './context/FirstContext';
+import { useSecondContext } from './context/SecondContext';
+import { useThirdContext } from './context/ThirdContext';
 
-function App() {
+const App = () => {
+  const { firstValue, setFirstValue } = useFirstContext();
+  const { secondValue, setSecondValue } = useSecondContext();
+  const { state, dispatch } = useThirdContext();
+
+  const handleIncrement = () => {
+    dispatch({ type: 'INCREMENT' });
+  };
+
+  const handleDecrement = () => {
+    dispatch({ type: 'DECREMENT' });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Fragment>
+      <div>
+        <p>First Context Value: {firstValue}</p>
+        <button onClick={() => setFirstValue("Updated First Value")} className='btn btn-primary'>Update First Value</button>
+
+        <p>Second Context Value: {secondValue}</p>
+        <button onClick={() => setSecondValue("Updated Second Value")} className='btn btn-primary'>Update Second Value</button>
+      </div>
+      <div>
+        <p>Count: {state.count}</p>
+        <div className='d-flex' style={{ gap: 10 }}>
+          <button onClick={handleIncrement} className='btn btn-primary'>Increment</button>
+          <button onClick={handleDecrement} className='btn btn-primary'>Decrement</button>
+        </div>
+      </div>
+    </Fragment>
+  )
 }
 
-export default App;
+export default App
