@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import { FirstContextProvider } from './context/FirstContext';
 import { SecondContextProvider } from './context/SecondContext';
 import { ThirdContextProvider } from './context/ThirdContext';
+import MyComponent from './MyComponent';
+import { ThemeProvider } from './context/ThemeProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,7 +16,10 @@ root.render(
     <FirstContextProvider>
       <SecondContextProvider>
         <ThirdContextProvider>
-          <App />
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+          {/* <MyComponent /> */}
         </ThirdContextProvider>
       </SecondContextProvider>
     </FirstContextProvider>

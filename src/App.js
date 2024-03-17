@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { useFirstContext } from './context/FirstContext';
 import { useSecondContext } from './context/SecondContext';
 import { useThirdContext } from './context/ThirdContext';
+import { ThemedButton } from './component/ThemedButton';
 
 const App = () => {
   const { firstValue, setFirstValue } = useFirstContext();
@@ -18,7 +19,7 @@ const App = () => {
 
   return (
     <Fragment>
-      <div>
+      {/* <div>
         <p>First Context Value: {firstValue}</p>
         <button onClick={() => setFirstValue("Updated First Value")} className='btn btn-primary'>Update First Value</button>
 
@@ -31,7 +32,8 @@ const App = () => {
           <button onClick={handleIncrement} className='btn btn-primary'>Increment</button>
           <button onClick={handleDecrement} className='btn btn-primary'>Decrement</button>
         </div>
-      </div>
+      </div> */}
+      <ThemedButton />
     </Fragment>
   )
 }
